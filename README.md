@@ -162,12 +162,7 @@ So that `<I can follow up with students who haven't completed their services>`
 |----------|-------------|
 | **Security** | Passwords must be stored encrypted (hashed). All data is transferred over HTTPS. Role-based access control must be enforced. Sessions expire after inactivity. |
 | **Privacy** | Students' personal data (passport, medical, payment) must be accessible only to the student and authorized staff. |
-| **Performance** | Pages load within 3 seconds under normal load. File uploads (up to 5 MB) complete within 10 seconds. |
 | **Availability** | The system should be available 99% of the time, especially during registration periods. |
-| **Scalability** | The system should support at least 1,000 concurrent users without performance degradation. |
 | **Usability** | The interface must be simple and clear for non-native speakers, with large service buttons and minimal steps. |
-| **Compatibility** | The website must work on modern browsers (Chrome, Edge, Firefox, Safari) and on mobile and desktop screens (responsive). |
-| **Reliability** | Regular automatic backups (daily), and no loss of uploaded documents. |
 | **Maintainability** | The code should be modular so that new services can be added without changing the whole system. |
-| **Printing** | Printed forms must keep their layout and be A4 compatible. |
 | **Email Delivery** | Email notifications should be sent within 1 minute of the triggering event. |
