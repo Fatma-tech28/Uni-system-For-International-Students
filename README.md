@@ -30,8 +30,6 @@ A website that lets international (foreign) students complete their university s
 - Foreign Students
 - Student Affairs
 
----
-
 ## User Stories
 
 ### Foreign Student
@@ -118,8 +116,6 @@ As a `<Staff member>`
 I want to `<search for students and track the status of their services>`
 So that `<I can follow up with students who haven't completed their services>`
 
----
-
 ## Functional Requirements
 
 ### Authentication and Account Management
@@ -153,8 +149,6 @@ So that `<I can follow up with students who haven't completed their services>`
 
 - **FR16:** The system shall support English (and optionally Arabic) for the interface.
 - **FR17:** The system shall allow staff to generate reports of paid and unpaid fees per student.
-
----
 
 ## Non-Functional Requirements
 
