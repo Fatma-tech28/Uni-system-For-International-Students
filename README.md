@@ -160,3 +160,130 @@ So that `<I can follow up with students who haven't completed their services>`
 | **Usability** | The interface must be simple and clear for non-native speakers, with large service buttons and minimal steps. |
 | **Maintainability** | The code should be modular so that new services can be added without changing the whole system. |
 | **Email Delivery** | Email notifications should be sent within 1 minute of the triggering event. |
+
+# International Students University System – Use Case Diagram
+
+## Actors
+
+- **Foreign Student** (primary): signs in, views and prints service papers, uploads signed papers/receipts, tracks status.
+- **Student Affairs Staff** (primary): manages student data and fees, reviews documents, schedules meetings, generates reports.
+- **Email Service** (secondary): delivers email notifications to students.
+
+## 1. Student Use Cases
+
+```mermaid
+%%{init: {'themeVariables': {'fontSize': '17px', 'edgeLabelBackground': '#ffffff'}}}%%
+flowchart LR
+    Student(["👤 Foreign Student"]):::student
+    Email(["✉️ Email Service"]):::external
+
+    subgraph SYS["International Students University System"]
+        direction LR
+
+        UC1(["Sign In"]):::shared
+        UC2(["Reset Password"]):::studentUC
+        UC3(["View Available Services"]):::studentUC
+
+        subgraph SERV["Services"]
+            direction TB
+            UC4(["Medical Examination"]):::studentUC
+            UC5(["Enrollment Fees"]):::studentUC
+            UC6(["Book Fees"]):::studentUC
+            UC7(["Residency Fees"]):::studentUC
+            UC8(["Additional Fees"]):::studentUC
+        end
+
+        UC9(["Print Service Paper"]):::studentUC
+        UC10(["Upload Signed Paper / Receipt"]):::studentUC
+        UC11(["View Service Status"]):::studentUC
+        UC12(["Receive Email Notification"]):::studentUC
+    end
+
+    %% Associations
+    Student --- UC1
+    Student --- UC2
+    Student --- UC3
+    Student --- UC10
+    Student --- UC11
+    Student --- UC12
+    UC12 --- Email
+
+    %% Include / extend
+    UC3 -.->|"<b>«include»</b>"| UC1
+    UC2 -.->|"<b>«extend»</b>"| UC1
+    UC4 -.->|"<b>«extend»</b>"| UC3
+    UC5 -.->|"<b>«extend»</b>"| UC3
+    UC6 -.->|"<b>«extend»</b>"| UC3
+    UC7 -.->|"<b>«extend»</b>"| UC3
+    UC8 -.->|"<b>«extend»</b>"| UC3
+    UC9 -.->|"<b>«extend»</b>"| UC5
+    UC9 -.->|"<b>«extend»</b>"| UC6
+    UC9 -.->|"<b>«extend»</b>"| UC7
+
+    classDef student fill:#1d4ed8,stroke:#1e3a8a,color:#ffffff,stroke-width:2px
+    classDef external fill:#ea580c,stroke:#9a3412,color:#ffffff,stroke-width:2px
+    classDef studentUC fill:#eff6ff,stroke:#2563eb,color:#0f172a,stroke-width:1.5px
+    classDef shared fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-width:1.5px
+
+    style SYS fill:#f8fafc,stroke:#94a3b8,stroke-width:2px,stroke-dasharray:6 4
+    style SERV fill:#dbeafe,stroke:#60a5fa,stroke-dasharray:3 3
+```
+
+## 2. Staff Use Cases
+
+```mermaid
+%%{init: {'themeVariables': {'fontSize': '17px', 'edgeLabelBackground': '#ffffff'}}}%%
+flowchart LR
+    Staff(["👤 Student Affairs Staff"]):::staff
+    Email(["✉️ Email Service"]):::external
+
+    subgraph SYS["International Students University System"]
+        direction LR
+
+        UC1(["Sign In"]):::shared
+
+        subgraph STU["Student Records"]
+            direction TB
+            UC13(["Register Student Data"]):::staffUC
+            UC14(["Edit Student Data"]):::staffUC
+            UC15(["Search & Track Students"]):::staffUC
+        end
+
+        subgraph FIN["Fees & Documents"]
+            direction TB
+            UC16(["Add Additional Fees"]):::staffUC
+            UC17(["Review Uploaded Documents"]):::staffUC
+            UC18(["Approve / Reject Document"]):::staffUC
+            UC20(["Generate Fees Reports"]):::staffUC
+        end
+
+        UC19(["Schedule Meeting"]):::staffUC
+        UC21(["Send Email Notification"]):::shared
+    end
+
+    %% Associations
+    Staff --- UC1
+    Staff --- UC13
+    Staff --- UC14
+    Staff --- UC15
+    Staff --- UC16
+    Staff --- UC17
+    Staff --- UC19
+    Staff --- UC20
+    UC21 --- Email
+
+    %% Include
+    UC17 -.->|"<b>«include»</b>"| UC18
+    UC16 -.->|"<b>«include»</b>"| UC21
+    UC18 -.->|"<b>«include»</b>"| UC21
+    UC19 -.->|"<b>«include»</b>"| UC21
+
+    classDef staff fill:#0f766e,stroke:#134e4a,color:#ffffff,stroke-width:2px
+    classDef external fill:#ea580c,stroke:#9a3412,color:#ffffff,stroke-width:2px
+    classDef staffUC fill:#ecfdf5,stroke:#0f766e,color:#0f172a,stroke-width:1.5px
+    classDef shared fill:#f1f5f9,stroke:#475569,color:#0f172a,stroke-width:1.5px
+
+    style SYS fill:#f8fafc,stroke:#94a3b8,stroke-width:2px,stroke-dasharray:6 4
+    style STU fill:#d1fae5,stroke:#34d399,stroke-dasharray:3 3
+    style FIN fill:#d1fae5,stroke:#34d399,stroke-dasharray:3 3
+```
