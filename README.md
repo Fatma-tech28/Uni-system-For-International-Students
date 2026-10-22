@@ -288,8 +288,8 @@ flowchart LR
     style FIN fill:#d1fae5,stroke:#34d399,stroke-dasharray:3 3
 ```
 ## 3. UML class diagram
----
 ```mermaid
+
 config:
   class:
     hideEmptyMembersBox: true
