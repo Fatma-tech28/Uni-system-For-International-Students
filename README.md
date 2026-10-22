@@ -289,6 +289,7 @@ flowchart LR
 ```
 ## 3. UML class diagram
 ---
+```mermaid
 config:
   class:
     hideEmptyMembersBox: true
